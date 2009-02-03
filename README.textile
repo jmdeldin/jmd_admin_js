@@ -1,0 +1,62 @@
+h1. jmd_admin_js
+
+h2. Requirements
+
+* TXP 4.0.7
+* "stm_javascript 0.3":http://textpattern.org/plugins/728/stm_javascript
+
+h2. Usage
+
+* To include JS on every page, edit the "default" JS file
+* To include JS on certain pages, save your JS as one of the following "event names":#events
+
+h2. Example: Hide the article-image field
+
+h3. JS: default
+
+bc. /**
+ * Hides a label's parent-node (usually a paragraph el.).
+ *
+ * @param string id Text-input ID/Label[for]
+ */
+function hideFormEl(id)
+{
+    var label = $('label[for=' + id + ']', '#article-col-1');
+    if (label)
+        label.parent().hide();
+}
+
+h3. JS: article
+
+bc. hideFormEl('article-image');
+
+h2(#events). Events
+
+h3(#events.content). Content-tab events
+
+|_. Tab                          |_. Event  |
+| "Write":./?event=article       | article  |
+| "Categories":./?event=category | category |
+| "Comments":./?event=discuss    | discuss  |
+| "Files":./?event=file          | file     |
+| "Images":./?event=image        | image    |
+| "Links":./?event=link          | link     |
+| "Articles":./?event=list       | list     |
+
+h3(#events.presentation). Presentation-tab events
+
+|_. Tab                       |_. Event  |
+| "Forms":./?event=form       | form     |
+| "Pages":./?event=page       | page     |
+| "Sections":./?event=section | section  |
+| "Style":./?event=css        | css      |
+
+h3(#events.admin). Admin-tab events
+
+|_. Tab                        |_. Event |
+| "Diagnostics":./?event=diag  | diag    |
+| "Import":./?event=import     | import  |
+| "Preferences":./?event=prefs | prefs   |
+| "Users":./?event=admin       | admin   |
+| "Visitor Logs":./?event=log  | log     |
+
